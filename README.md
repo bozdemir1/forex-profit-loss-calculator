@@ -1,6 +1,6 @@
-# Forex Lot Calculator 📈
+# Forex Kar-Zarar Hesaplayıcı 📈
 
-Profesyonel forex ve CFD işlemcileri için geliştirilmiş kapsamlı lot hesaplama aracı.
+Profesyonel forex ve CFD işlemcileri için geliştirilmiş kapsamlı kar-zarar hesaplama aracı.
 
 ## 🚀 Özellikler
 
@@ -38,7 +38,7 @@ Profesyonel forex ve CFD işlemcileri için geliştirilmiş kapsamlı lot hesapl
 
 ## 📱 Erişim
 
-Uygulamaya [buradan](https://your-username.github.io/lot-calculator/) erişebilirsiniz.
+Uygulamaya [buradan](https://salihbozdemir.github.io/forex-profit-loss-calculator/) erişebilirsiniz.
 
 ## 🛠️ Teknolojiler
 
