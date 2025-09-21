@@ -12,6 +12,18 @@ const currencyPairData = {
         name: 'Silver/USD (Gümüş)',
         pipPosition: 2 
     },
+    'UKOIL': { 
+        pipDecimal: 0.01, 
+        contractSize: 1000, 
+        name: 'Brent Oil (Ukoil)',
+        pipPosition: 2 
+    },
+    'UKO': { 
+        pipDecimal: 0.01, 
+        contractSize: 100, 
+        name: 'Brent Oil (uko)',
+        pipPosition: 2 
+    },
     'GER30_10': { 
         pipDecimal: 1.0, 
         contractSize: 10, 
@@ -187,6 +199,9 @@ function calculatePipValue(lotSize, contractSize, currentPrice, currencyPair) {
         // Emtialar ve endeksler için: lot * sözleşme büyüklüğü * 1.0
         // Bu enstrümanlarda 1 birim fiyat hareketi = lot * sözleşme * 1 dolar kar/zarar
         return lotSize * contractSize * 1.0;
+    } else if (currencyPair === 'UKOIL' || currencyPair === 'UKO') {
+        // Brent petrol için: lot * sözleşme büyüklüğü * 0.01 (cent bazında)
+        return lotSize * contractSize * 0.01;
     } else if (currencyPair === 'XAGUSD') {
         // Gümüş için özel hesaplama: lot * sözleşme * 0.01 (cent bazlı)
         return lotSize * contractSize * 0.01;
@@ -212,6 +227,8 @@ function calculatePipDistance(currentPrice, targetPrice, pipDecimal) {
     
     if (currencyPair === 'XAUUSD' || currencyPair === 'GER30_10' || currencyPair === 'DE40' || currencyPair === 'US100_20' || currencyPair === 'NDX100' || currencyPair === 'SWI20') {
         pipDistance = priceDifference; // Bu enstrümanlarda 1 birim = 1 pip
+    } else if (currencyPair === 'UKOIL' || currencyPair === 'UKO') {
+        pipDistance = priceDifference / 0.01; // Brent petrol için cent bazında
     } else if (currencyPair === 'XAGUSD') {
         pipDistance = priceDifference / 0.01; // Gümüş için cent bazlı
     } else {
