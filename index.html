@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Lot Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Forex Lot Calculator</h1>
+        
+        <div class="calculator">
+            <div class="input-section">
+                <h2>İşlem Bilgileri</h2>
+                
+                <div class="form-group">
+                    <label for="currencyPair">Enstrüman:</label>
+                    <select id="currencyPair">
+                        <optgroup label="Emtialar">
+                            <option value="XAUUSD">XAUUSD - Altın/USD</option>
+                            <option value="XAGUSD">XAGUSD - Gümüş/USD</option>
+                        </optgroup>
+                        <optgroup label="Endeksler">
+                            <option value="GER30_10">GER30 - DAX (10 EUR)</option>
+                            <option value="DE40">DE40 - DAX (25 EUR)</option>
+                            <option value="NDX100">NDX100 - NASDAQ (10 USD)</option>
+                            <option value="US100_20">US100 - NASDAQ (20 USD)</option>
+                            <option value="SWI20">SWI20 - Swiss 20</option>
+                        </optgroup>
+                        <optgroup label="Forex Çiftleri">
+                            <option value="EURUSD">EURUSD - Euro/USD</option>
+                            <option value="GBPUSD">GBPUSD - Pound/USD</option>
+                            <option value="USDJPY">USDJPY - USD/Yen</option>
+                            <option value="AUDUSD">AUDUSD - AUD/USD</option>
+                            <option value="USDCAD">USDCAD - USD/CAD</option>
+                            <option value="USDCHF">USDCHF - USD/CHF</option>
+                            <option value="NZDUSD">NZDUSD - NZD/USD</option>
+                            <option value="EURGBP">EURGBP - Euro/Pound</option>
+                            <option value="EURJPY">EURJPY - Euro/Yen</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lotSize">Lot Büyüklüğü:</label>
+                    <input type="number" id="lotSize" step="0.01" value="0.1" min="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="contractSize">Sözleşme Büyüklüğü:</label>
+                    <input type="number" id="contractSize" value="100000" min="1">
+                    <small>Standart lot büyüklüğü (genellikle 100,000)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="leverage">Kaldıraç Oranı:</label>
+                    <select id="leverage">
+                        <option value="1">1:1</option>
+                        <option value="5">1:5</option>
+                        <option value="10">1:10</option>
+                        <option value="20">1:20</option>
+                        <option value="30">1:30</option>
+                        <option value="50">1:50</option>
+                        <option value="100" selected>1:100</option>
+                        <option value="200">1:200</option>
+                        <option value="500">1:500</option>
+                        <option value="1000">1:1000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="currentPrice">Mevcut Fiyat:</label>
+                    <input type="number" id="currentPrice" step="0.00001" value="2680.50">
+                </div>
+
+                <div class="form-group">
+                    <label for="stopLoss">Stop Loss:</label>
+                    <input type="number" id="stopLoss" step="0.00001" value="2650.00">
+                </div>
+
+                <div class="form-group">
+                    <label for="takeProfit">Take Profit:</label>
+                    <input type="number" id="takeProfit" step="0.00001" value="2690.00">
+                </div>
+
+
+                <button onclick="calculate()">Hesapla</button>
+            </div>
+
+            <div class="result-section">
+                <h2>Hesaplama Sonuçları</h2>
+                
+                <div class="result-card">
+                    <h3>Lot Bilgileri</h3>
+                    <div class="result-item">
+                        <span>Pozisyon Büyüklüğü:</span>
+                        <span id="positionSize">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Pip Değeri:</span>
+                        <span id="pipValue">-</span>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Kar/Zarar Analizi</h3>
+                    <div class="result-item profit">
+                        <span>Maksimum Kâr (TP):</span>
+                        <span id="maxProfit">-</span>
+                    </div>
+                    <div class="result-item loss">
+                        <span>Maksimum Zarar (SL):</span>
+                        <span id="maxLoss">-</span>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Risk Yönetimi</h3>
+                    <div class="result-item">
+                        <span>Gerekli Marj:</span>
+                        <span id="requiredMargin">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Risk/Ödül Oranı:</span>
+                        <span id="riskRewardRatio">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>SL Mesafesi (Pip):</span>
+                        <span id="slDistance">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>TP Mesafesi (Pip):</span>
+                        <span id="tpDistance">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
